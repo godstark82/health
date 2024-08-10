@@ -30,10 +30,6 @@ jobs:
       - name: Install js-yaml
         run: npm install js-yaml
 
-      # Extract version from pubspec.yaml
-      - name: Extract version from pubspec.yaml
-        id: extract_version
-        run: node get-version.js
 
       # Clean Cache
       - name: Clean Cache
@@ -54,6 +50,11 @@ jobs:
       # Adjust Base HREF
       - name: Adjust Base HREF
         run: sed -i 's|<base href="/">|<base href="/health/">|' build/web/index.html
+
+      # Extract version from pubspec.yaml
+      - name: Extract version from pubspec.yaml
+        id: extract_version
+        run: node get-version.js
 
       # Deploy To GitHub Pages
       - name: Deploy To GitHub Pages
